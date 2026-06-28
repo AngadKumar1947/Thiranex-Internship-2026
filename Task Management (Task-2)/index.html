@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Management App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Task Manager</h1>
+<h1>Task Manager & Administrator</h1>
+<div class="input-area">
+<input type="text" id="taskInput" placeholder="Enter Task">
+<button onclick="addTask()">Add</button>
+</div>
+
+<input
+type="text"
+id="search"
+placeholder="Search Task"
+onkeyup="displayTasks()">
+
+<div class="filters">
+<button onclick="filter='all';displayTasks()">All</button>
+<button onclick="filter='pending';displayTasks()">Pending</button>
+<button onclick="filter='completed';displayTasks()">Completed</button>
+</div>
+
+<ul id="taskList"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
