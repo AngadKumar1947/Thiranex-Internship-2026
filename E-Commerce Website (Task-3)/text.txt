@@ -1,0 +1,77 @@
+type: String,
+    default: "https://www.istockphoto.com/photo/sycamore-tree-in-summer-field-at-sunset-england-uk-gm476116580-66350103?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Ftree&utm_term=tree%3A%3Aaffiliate-layout-optim%3Ab%3A9dd5ecb1-e2a3-4217-849b-67b74abc2d1d",
+    set: (v) => v === "" ? "https://www.istockphoto.com/photo/sycamore-tree-in-summer-field-at-sunset-england-uk-gm476116580-66350103?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Ftree&utm_term=tree%3A%3Aaffiliate-layout-optim%3Ab%3A9dd5ecb1-e2a3-4217-849b-67b74abc2d1d" : v,
+
+     app.post("/listings", async (req, res)=> {
+        const {title} = req.body;
+        console.log(title);
+        // const newListing = new Listing (listing);
+        // await newListing.save();
+        res.redirect("/listings");
+    });
+
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+
+
+<p><%= err.trace %></p>
+
+ 
+
+ <% layout ("/layouts/boilerplate") %>
+
+    <body>
+        <h3>All Listings</h3>
+        <!-- <form method="GET" action="/listings/new">
+        <button>Create New Listing</button>
+    </form> -->
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+            <% for(let listing of allListings){%>
+                <a href="/listings/<%= listing._id%>" class="listing-link">
+                    <div class="card col listing-card">
+                        <img class="card-img-top" src="<%= listing.image.url %>" alt="listing_image"
+                            style="height: 20rem;">
+                        <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>
+                                        <%=listing.title%><br>
+                                    </b>
+                                    &#8377;<%= listing.price.toLocaleString("en-IN") %>&nbsp; &nbsp;
+                                    <i class="tax-info">+ 18% GST</i>
+                                </p>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+            </a>
+</body>
+
+//Server.js
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+
+app.get("/getcookies", (req, res) => {
+    res.cookie("greet", "hello");
+    res.cookie("makeIn", "India");
+    res.send("sent a some cookies!");
+});
+
+app.get("/verify", (req, res) => {
+    console.log(req.signedCookies);
+    res.send("verified");
+});
+
+app.get("/greet", (req, res) => {
+    console.log(req.body);
+    let {name = "anonymous"} = req.cookies;
+    res.send(`Hi, ${name}`);
+});
+
+app.get("/", (req, res) => {
+    console.dir(req.cookie);
+    res.send("Hi, I am root!");
+});
+
+app.use("/users", users);
+app.use("/posts", posts);
